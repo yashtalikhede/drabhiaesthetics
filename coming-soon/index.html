@@ -46,12 +46,8 @@
 </main>
 
 <footer class="site-footer">
-  <p>&copy; 2025 Dr. Abhi Aesthetics. All rights reserved.</p>
+  <p>&copy; 2026 Dr. Abhi Aesthetics. All rights reserved.</p>
 </footer>
-
-<button type="button" class="legal-toggle" data-opens="legal-dialog" aria-label="Legal and privacy information">
-  <span aria-hidden="true">i</span>
-</button>
 
 <dialog class="dialog" id="signup-dialog" aria-labelledby="signup-heading">
   <div class="dialog__panel">
@@ -79,7 +75,8 @@
           <span>I agree to receive occasional updates and offers. Unsubscribe anytime.</span>
         </label>
 
-        <button type="submit" class="action action--primary action--block">Notify Me</button>
+        <button type="submit" class="action action--primary action--block" id="signup-submit">Notify Me</button>
+        <p class="signup__error" id="signup-error" role="alert" hidden>Something went wrong. Please try again.</p>
       </form>
     </div>
 
@@ -91,18 +88,6 @@
       <h2 class="dialog__heading">Thank you</h2>
       <p class="dialog__note">You're on the waiting list. We'll email you as soon as we open our doors in Hinjawadi.</p>
       <button type="button" class="action action--secondary action--block" data-closes>Close</button>
-    </div>
-  </div>
-</dialog>
-
-<dialog class="dialog" id="legal-dialog" aria-labelledby="legal-heading">
-  <div class="dialog__panel">
-    <button type="button" class="dialog__close" data-closes aria-label="Close">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="dialog__body">
-      <h2 class="dialog__heading" id="legal-heading">Disclaimer</h2>
-      <p class="dialog__note">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
     </div>
   </div>
 </dialog>
