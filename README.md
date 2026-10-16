@@ -1,6 +1,6 @@
 # Dr. Abhi Aesthetics — Website Project
 
-Client: Dr. Abhishek Yadav  
+Client: Dr. Abhisek Yadav  
 Clinic: Dr. Abhi Aesthetics, Hinjawadi, Pune  
 Domain: drabhiaesthetics.com  
 Developer: Yash Talikhede  
