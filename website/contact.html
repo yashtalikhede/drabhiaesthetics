@@ -5,15 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact &amp; Book a Consultation | Dr. Abhi Aesthetics, Hinjawadi Pune</title>
 <meta name="description" content="Book a consultation at Dr. Abhi Aesthetics, D-Block, Streets of Europe, Hinjawadi, Pune. Open Monday to Saturday, 10:00 AM to 7:00 PM.">
-<meta name="theme-color" content="#FAF7F2">
+<meta name="theme-color" content="#F7F2E8">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="preloader" aria-hidden="true">
+  <img class="preloader__mark" src="assets/logo.png" alt="" width="379" height="360">
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -59,7 +67,7 @@
         <a href="index.html">Home</a> &nbsp;&rsaquo;&nbsp; <span>Contact</span>
       </nav>
       <p class="eyebrow">Get in Touch</p>
-      <h1 class="page-header__title">Book a Consultation</h1>
+      <h1 class="page-header__title reveal-text">Book a Consultation</h1>
       <p class="page-header__lead">Send an enquiry and the clinic will get back to you to confirm a time that works.</p>
     </div>
   </section>
@@ -69,8 +77,8 @@
       <div class="split reveal">
 
         <div>
-          <h2 class="bio-block__title">Clinic Details</h2>
-          <hr class="rule">
+          <h2 class="bio-block__title reveal-text">Clinic Details</h2>
+          <svg class="divider" viewBox="0 0 80 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="80" y2="0.5"/></svg>
 
           <dl class="contact-details">
             <div>
@@ -128,8 +136,8 @@
 
         <div id="booking">
           <div class="form-card">
-            <h2 class="bio-block__title">Send an Enquiry</h2>
-            <hr class="rule">
+            <h2 class="bio-block__title reveal-text">Send an Enquiry</h2>
+            <svg class="divider" viewBox="0 0 80 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="80" y2="0.5"/></svg>
 
             <form class="form" id="enquiryForm">
               <div class="field">
@@ -158,13 +166,13 @@
                 <textarea class="field__input" id="message" name="message" rows="4" placeholder="Tell us briefly what you would like help with."></textarea>
               </div>
 
-              <button class="btn btn--primary btn--block" type="submit" id="enquirySubmit">Send Enquiry</button>
+              <button class="btn btn--primary btn--block" data-magnetic type="submit" id="enquirySubmit">Send Enquiry</button>
               <p class="form__status form__status--error" id="enquiryError" role="alert" hidden>Something went wrong. Please try again, or email us directly at drabhiaesthetics2807@gmail.com.</p>
             </form>
 
             <div class="form__success" id="enquirySuccess" hidden>
               <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M15 24.5l6.5 6.5L33 19"/></svg>
-              <h3 class="bio-block__title">Thank you</h3>
+              <h3 class="bio-block__title reveal-text">Thank you</h3>
               <p>Your enquiry has reached the clinic. We will be in touch shortly to confirm your consultation.</p>
             </div>
           </div>

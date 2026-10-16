@@ -5,19 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dr. Abhi Aesthetics | Skin, Hair &amp; Fitness Clinic in Hinjawadi, Pune</title>
 <meta name="description" content="Dr. Abhi Aesthetics is a skin, hair and fitness clinic in Hinjawadi, Pune, led by Dr. Abhisek Yadav. Evidence-based dermatology, trichology and fitness care.">
-<meta name="theme-color" content="#FAF7F2">
+<meta name="theme-color" content="#0D0D0D">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dr. Abhi Aesthetics — Where Science Meets Beauty">
 <meta property="og:description" content="Expert care in Skin, Hair &amp; Fitness by Dr. Abhisek Yadav. Hinjawadi, Pune.">
 <meta property="og:image" content="assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="has-dark-hero">
+
+<div class="preloader" aria-hidden="true">
+  <img class="preloader__mark" src="assets/logo.png" alt="" width="379" height="360">
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -58,14 +66,16 @@
 <main>
 
   <section class="hero">
+    <span class="hero__grain" aria-hidden="true"></span>
     <div class="wrap">
       <div class="hero__grid">
         <div>
-          <h1 class="hero__title">Where Science Meets Beauty</h1>
-          <hr class="rule">
+          <img class="hero__mark" src="assets/logo.png" alt="" width="379" height="360">
+          <h1 class="hero__title reveal-text">Where Science Meets <em>Beauty</em></h1>
+          <svg class="divider" viewBox="0 0 80 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="80" y2="0.5"/></svg>
           <p class="hero__lead">Expert care in Skin, Hair &amp; Fitness by Dr. Abhisek Yadav — Board Certified Aesthetic Physician, Hinjawadi, Pune.</p>
           <div class="hero__actions">
-            <a class="btn btn--primary" href="contact.html">Book a Consultation</a>
+            <a class="btn btn--primary" data-magnetic href="contact.html">Book a Consultation</a>
             <a class="btn btn--outline" href="services.html">Explore Services</a>
           </div>
           <ul class="pills">
@@ -76,10 +86,10 @@
         </div>
 
         <!-- Swap this placeholder for the clinic hero photo when available -->
-        <div class="placeholder placeholder--hero">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-5.5 5.5L8 14l-5 5"/></svg>
-          <span>Clinic Photo — Coming Soon</span>
-        </div>
+        <figure class="frame frame--hero frame--on-dark">
+          <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
+          <figcaption class="frame__label">Clinic Photography — Coming Soon</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -107,15 +117,15 @@
     <div class="wrap">
       <div class="split reveal">
         <!-- Swap this placeholder for the doctor's portrait when available -->
-        <div class="placeholder placeholder--portrait">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>
-          <span>Doctor Photo — Coming Soon</span>
-        </div>
+        <figure class="frame frame--portrait">
+          <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
+          <figcaption class="frame__label">Doctor Portrait — Coming Soon</figcaption>
+        </figure>
 
         <div>
           <p class="eyebrow">Meet the Doctor</p>
-          <h2 class="section__title">Meet Dr. Abhisek Yadav</h2>
-          <hr class="rule">
+          <h2 class="section__title reveal-text">Meet Dr. Abhisek Yadav</h2>
+          <svg class="divider" viewBox="0 0 80 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="80" y2="0.5"/></svg>
           <p>Dr. Abhisek Yadav practises across dermatology, trichology and fitness medicine, treating skin, hair and body as one connected system rather than three separate problems.</p>
           <p>His approach is diagnosis first and evidence second — every plan begins with understanding the cause, not prescribing a trend.</p>
           <p>Patients see the same doctor at every visit, from first consultation through to long-term follow-up.</p>
@@ -129,7 +139,7 @@
     <div class="wrap">
       <div class="section__head reveal">
         <p class="eyebrow">What We Offer</p>
-        <h2 class="section__title">Our Specialties</h2>
+        <h2 class="section__title reveal-text">Our Specialties</h2>
         <p class="section__intro">Three areas of focus, delivered under one roof by one doctor who knows your full history.</p>
       </div>
 
@@ -174,7 +184,7 @@
     <div class="wrap">
       <div class="section__head reveal">
         <p class="eyebrow">The Difference</p>
-        <h2 class="section__title">Why Choose Us</h2>
+        <h2 class="section__title reveal-text">Why Choose Us</h2>
       </div>
 
       <div class="feature-grid">
@@ -207,7 +217,8 @@
       <div class="instagram-card reveal">
         <svg class="instagram-card__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
         <div>
-          <h2 class="card__title">Follow the Journey</h2>
+          <p class="eyebrow">Social</p>
+          <h2 class="card__title reveal-text">Follow the Journey</h2>
           <span class="instagram-card__handle">@drabhiaesthetics</span>
           <p class="section__intro">Join our growing community on Instagram for treatment insights, before-and-afters and clinic updates.</p>
         </div>
@@ -222,7 +233,7 @@
     <div class="wrap">
       <div class="section__head reveal">
         <p class="eyebrow">Patient Voices</p>
-        <h2 class="section__title">What Our Patients Say</h2>
+        <h2 class="section__title reveal-text">What Our Patients Say</h2>
         <p class="section__intro">Real reviews will be published here as our first patients complete their treatment journeys.</p>
       </div>
 
@@ -246,11 +257,13 @@
     </div>
   </section>
 
-  <section class="cta-banner">
+  <section class="cta-band">
+    <span class="hero__grain" aria-hidden="true"></span>
     <div class="wrap">
-      <h2 class="cta-banner__title">Ready to start your journey?</h2>
-      <p class="cta-banner__text">Book a consultation with Dr. Abhisek Yadav and get a plan built around your skin, hair and fitness goals.</p>
-      <a class="btn btn--light" href="contact.html">Book a Consultation</a>
+      <p class="eyebrow">Begin</p>
+      <h2 class="cta-band__title reveal-text">Ready to start your <em>journey</em>?</h2>
+      <p class="cta-band__text">Book a consultation with Dr. Abhisek Yadav and get a plan built around your skin, hair and fitness goals.</p>
+      <a class="btn btn--light" data-magnetic href="contact.html">Book a Consultation</a>
     </div>
   </section>
 

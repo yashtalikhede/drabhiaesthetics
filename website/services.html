@@ -5,15 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services | Skin, Hair &amp; Fitness Treatments | Dr. Abhi Aesthetics</title>
 <meta name="description" content="Skin, hair and fitness treatments at Dr. Abhi Aesthetics, Hinjawadi, Pune — from acne and pigmentation to PRP hair therapy, body composition analysis and nutrition planning.">
-<meta name="theme-color" content="#FAF7F2">
+<meta name="theme-color" content="#F7F2E8">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="preloader" aria-hidden="true">
+  <img class="preloader__mark" src="assets/logo.png" alt="" width="379" height="360">
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -59,7 +67,7 @@
         <a href="index.html">Home</a> &nbsp;&rsaquo;&nbsp; <span>Services</span>
       </nav>
       <p class="eyebrow">What We Offer</p>
-      <h1 class="page-header__title">Our Services</h1>
+      <h1 class="page-header__title reveal-text">Our Services</h1>
       <p class="page-header__lead">Twenty-two treatments across skin, hair and fitness — each one planned after a diagnosis, never before it.</p>
     </div>
   </section>
@@ -89,10 +97,36 @@
         <span>Pricing and session durations are pending confirmation from the clinic. Replace the placeholders marked in this style before the site goes live.</span>
       </div>
 
+      <!-- BEFORE / AFTER DEMO
+           Both sides are placeholder panels. To go live, drop a real image
+           into each .compare__panel (keeping the .compare__caption) once
+           consented patient photography is available. -->
+      <div class="compare-demo reveal">
+        <p class="eyebrow">Results</p>
+        <h2 class="section__title reveal-text">Before &amp; After</h2>
+        <p class="section__intro">Drag the handle to compare. Patient results will be published here once treatment photography and written consent are in place.</p>
+
+        <div class="compare">
+          <div class="compare__panel compare__panel--after">
+            <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
+            <span class="compare__caption">After — Coming Soon</span>
+          </div>
+          <div class="compare__panel compare__panel--before">
+            <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
+            <span class="compare__caption">Before — Coming Soon</span>
+          </div>
+          <span class="compare__divider" aria-hidden="true"></span>
+          <span class="compare__knob" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M10 7l-5 5 5 5M14 7l5 5-5 5"/></svg>
+          </span>
+          <input class="compare__range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Reveal more of the before or after image">
+        </div>
+      </div>
+
       <div class="service-group" id="skin">
         <div class="section__head reveal">
           <p class="eyebrow">Category One</p>
-          <h2 class="section__title">Skin &amp; Dermatology</h2>
+          <h2 class="section__title reveal-text">Skin &amp; Dermatology</h2>
           <p class="section__intro">Medical and cosmetic dermatology for active conditions, texture, tone and ageing concerns.</p>
         </div>
 
@@ -228,7 +262,7 @@
       <div class="service-group" id="hair">
         <div class="section__head reveal">
           <p class="eyebrow">Category Two</p>
-          <h2 class="section__title">Hair &amp; Trichology</h2>
+          <h2 class="section__title reveal-text">Hair &amp; Trichology</h2>
           <p class="section__intro">Diagnosis-led hair and scalp care, from hair fall investigation through to restoration planning.</p>
         </div>
 
@@ -336,7 +370,7 @@
       <div class="service-group" id="fitness">
         <div class="section__head reveal">
           <p class="eyebrow">Category Three</p>
-          <h2 class="section__title">Fitness &amp; Wellness</h2>
+          <h2 class="section__title reveal-text">Fitness &amp; Wellness</h2>
           <p class="section__intro">Medically supervised fitness and nutrition, built around measurement rather than guesswork.</p>
         </div>
 
@@ -432,9 +466,9 @@
 
   <section class="cta-banner">
     <div class="wrap">
-      <h2 class="cta-banner__title">Not sure which treatment you need?</h2>
+      <h2 class="cta-banner__title reveal-text">Not sure which treatment you need?</h2>
       <p class="cta-banner__text">That is exactly what the first consultation is for. Book a session and we will work it out together.</p>
-      <a class="btn btn--light" href="contact.html">Book a Consultation</a>
+      <a class="btn btn--light" data-magnetic href="contact.html">Book a Consultation</a>
     </div>
   </section>
 
