@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Services | Skin, Hair &amp; Fitness Treatments | Dr. Abhi Aesthetics</title>
 <meta name="description" content="Skin, hair and fitness treatments at Dr. Abhi Aesthetics, Hinjawadi, Pune — from acne and pigmentation to PRP hair therapy, body composition analysis and nutrition planning.">
 <meta name="theme-color" content="#F7F2E8">
@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap">
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@400,500,600&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
       </ul>
 
       <div class="nav__actions">
-        <a class="btn btn--primary nav__cta" href="contact.html">Book Consultation</a>
+        <a class="btn btn--primary nav__cta" href="contact.html#booking">Book Consultation</a>
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
           <span></span><span></span><span></span>
         </button>
@@ -61,414 +61,440 @@
 
 <main>
 
-  <section class="page-header">
+  <section class="page-head">
     <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="crumbs" aria-label="Breadcrumb">
         <a href="index.html">Home</a> &nbsp;&rsaquo;&nbsp; <span>Services</span>
       </nav>
-      <p class="eyebrow">What We Offer</p>
-      <h1 class="page-header__title reveal-text">Our Services</h1>
-      <p class="page-header__lead">Twenty-two treatments across skin, hair and fitness — each one planned after a diagnosis, never before it.</p>
+      <p class="eyebrow">What Brings You Here?</p>
+      <h1 class="page-head__title reveal-text">Start With the Concern</h1>
+      <p class="lead">Twenty-two treatments across skin, hair and fitness. Pick the area that brought you here and we will take it from there.</p>
+
+      <div class="concerns">
+        <a class="concern" href="#skin">
+          <svg class="concern__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="9.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="14.5" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><path d="M9 14.5c.9 1.1 2 1.6 3 1.6s2.1-.5 3-1.6"/></svg>
+          <span>
+            <span class="concern__title">Skin Concerns</span>
+            <span class="concern__text">Acne, pigmentation, scarring, ageing</span>
+          </span>
+        </a>
+        <a class="concern" href="#hair">
+          <svg class="concern__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2S6.5 10 6.5 14.4a5.5 5.5 0 1011 0C17.5 10 12 3.2 12 3.2z"/><path d="M9.8 14.8a2.4 2.4 0 002.4 2.4"/></svg>
+          <span>
+            <span class="concern__title">Hair Concerns</span>
+            <span class="concern__text">Hair fall, thinning, scalp health</span>
+          </span>
+        </a>
+        <a class="concern" href="#fitness">
+          <svg class="concern__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="9.5" width="3.5" height="5" rx="1"/><rect x="18" y="9.5" width="3.5" height="5" rx="1"/><path d="M6 12h12"/><path d="M8.5 8.5v7M15.5 8.5v7"/></svg>
+          <span>
+            <span class="concern__title">Fitness Goals</span>
+            <span class="concern__text">Weight, nutrition, body composition</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <nav class="service-nav" id="serviceNav" aria-label="Service categories">
+  <nav class="svc-nav" id="svcNav" aria-label="Service categories">
     <a href="#skin">Skin</a>
     <a href="#hair">Hair</a>
     <a href="#fitness">Fitness</a>
   </nav>
 
-  <!-- ══════════════════════════════════════════════════════════════════
-       PRICING — PLACEHOLDER STATUS
-       Every service below is marked "Consultation required" rather than
-       carrying a price. No prices on this page have been confirmed by the
-       client, so none have been invented: publishing an unconfirmed figure
-       for a medical treatment is a commitment the clinic may not want.
-       To add pricing, replace the "Consultation required" tag in each
-       <details> summary with the agreed starting price.
-       Session durations are likewise marked [duration TBC] pending the
-       doctor's confirmation.
-       ══════════════════════════════════════════════════════════════════ -->
-
-  <section class="section">
+  <section class="section section--md section--white">
     <div class="wrap">
-
-      <div class="pending-note">
-        <span>Pricing and session durations are pending confirmation from the clinic. Replace the placeholders marked in this style before the site goes live.</span>
-      </div>
-
-      <!-- BEFORE / AFTER DEMO
-           Both sides are placeholder panels. To go live, drop a real image
-           into each .compare__panel (keeping the .compare__caption) once
-           consented patient photography is available. -->
-      <div class="compare-demo reveal">
+      <!-- BEFORE / AFTER DEMO — both sides are placeholder panels. Drop a real
+           image into each .compare__panel (keeping the caption) once consented
+           patient photography is available. -->
+      <div class="compare-wrap reveal">
         <p class="eyebrow">Results</p>
-        <h2 class="section__title reveal-text">Before &amp; After</h2>
-        <p class="section__intro">Drag the handle to compare. Patient results will be published here once treatment photography and written consent are in place.</p>
+        <h2 class="h-section reveal-text">Before &amp; After</h2>
+        <p class="lead">Drag the handle to compare. Patient results appear here once treatment photography and written consent are in place.</p>
 
         <div class="compare">
           <div class="compare__panel compare__panel--after">
             <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
-            <span class="compare__caption">After — Coming Soon</span>
+            <span class="compare__cap">After — Coming Soon</span>
           </div>
           <div class="compare__panel compare__panel--before">
             <svg class="frame__monogram" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 82 L50 20 L76 82 M35 62 H65"/></svg>
-            <span class="compare__caption">Before — Coming Soon</span>
+            <span class="compare__cap">Before — Coming Soon</span>
           </div>
-          <span class="compare__divider" aria-hidden="true"></span>
+          <span class="compare__line" aria-hidden="true"></span>
           <span class="compare__knob" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M10 7l-5 5 5 5M14 7l5 5-5 5"/></svg>
           </span>
           <input class="compare__range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Reveal more of the before or after image">
         </div>
       </div>
-
-      <div class="service-group" id="skin">
-        <div class="section__head reveal">
-          <p class="eyebrow">Category One</p>
-          <h2 class="section__title reveal-text">Skin &amp; Dermatology</h2>
-          <p class="section__intro">Medical and cosmetic dermatology for active conditions, texture, tone and ageing concerns.</p>
-        </div>
-
-        <div class="service-list reveal">
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Acne Treatment</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Medical management of active acne, from comedonal breakouts to inflammatory and hormonal patterns. Treatment begins by identifying the trigger — hormonal, bacterial, dietary or product-related — and builds a topical, oral or in-clinic plan from there.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Acne Scar Reduction</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Resurfacing for post-acne scarring and uneven texture. The approach depends on scar type — boxcar, rolling or icepick — and typically runs over a planned series of sessions rather than a single visit.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Pigmentation Treatment</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Targeted care for melasma, sun-induced pigmentation and post-inflammatory marks. Includes assessment of the depth of pigment, which determines how much improvement is realistically achievable and over what timeframe.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Skin Brightening</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Treatments aimed at a more even, healthier-looking tone and improved skin clarity. Focused on correcting dullness and patchiness rather than altering your natural complexion.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Anti-Ageing Treatments</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Management of fine lines, loss of firmness and age-related volume change. Plans are built to keep expression natural, with a clear explanation of what each option can and cannot change.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Chemical Peels</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Controlled exfoliation to improve texture, congestion, pigmentation and dullness. Peel strength and formulation are matched to your skin type and the downtime you can accommodate.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Mole &amp; Wart Removal</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Minor in-clinic removal of moles, warts, skin tags and similar lesions. Every lesion is clinically assessed first; anything suspicious is referred for appropriate investigation before any cosmetic removal.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Laser Skin Treatment</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Laser-based resurfacing and toning for texture, pigmentation and overall skin quality. Suitability depends on your skin type and recent sun exposure, both of which are assessed beforehand.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Under Eye Treatment</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Care for dark circles, hollowing and crepey texture under the eyes. The cause matters here — pigment, shadow from volume loss, and vascular darkness each respond to different treatments, so the consultation separates them first.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="service-group" id="hair">
-        <div class="section__head reveal">
-          <p class="eyebrow">Category Two</p>
-          <h2 class="section__title reveal-text">Hair &amp; Trichology</h2>
-          <p class="section__intro">Diagnosis-led hair and scalp care, from hair fall investigation through to restoration planning.</p>
-        </div>
-
-        <div class="service-list reveal">
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">PRP Therapy for Hair Loss</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Platelet-rich plasma prepared from your own blood sample and delivered into the scalp to support existing follicles. Usually planned as a course of sessions, with response reviewed at set intervals.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Hair Fall Diagnosis</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>A structured investigation into why hair is shedding or thinning — covering scalp examination, pattern assessment, and where indicated, blood work for nutritional, thyroid or hormonal causes. This is the recommended starting point for any hair concern.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Dandruff &amp; Scalp Care</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Treatment for flaking, itching, seborrhoeic dermatitis and other scalp conditions. Persistent dandruff is frequently a driver of hair fall, so the scalp is treated as part of the wider hair plan rather than separately.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Mesotherapy</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Micro-delivery of a targeted nutrient and medication blend into the scalp to support follicle health. Often combined with other treatments as part of a staged hair programme.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Laser Hair Reduction</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Laser treatment to reduce unwanted hair growth on the face or body. Results build across a planned series of sessions, and the number required varies with hair colour, thickness and the area being treated.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Hair Transplant Consultation</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>An honest assessment of whether a transplant is appropriate for you — covering donor area quality, graft estimates, expected density and realistic outcomes. Many patients are advised to stabilise ongoing hair loss medically before considering surgery.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Hair Spa</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>A conditioning and scalp-nourishing treatment for dryness, dullness and product build-up. Supportive care rather than a medical treatment, and best used alongside a clinical plan where hair fall is also a concern.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="service-group" id="fitness">
-        <div class="section__head reveal">
-          <p class="eyebrow">Category Three</p>
-          <h2 class="section__title reveal-text">Fitness &amp; Wellness</h2>
-          <p class="section__intro">Medically supervised fitness and nutrition, built around measurement rather than guesswork.</p>
-        </div>
-
-        <div class="service-list reveal">
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Body Composition Analysis</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Measurement of fat mass, lean muscle, water balance and distribution — the baseline that makes progress measurable. Far more useful than bodyweight alone, and repeated periodically to track real change.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Weight Management</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>A medically supervised programme for sustainable weight loss or gain, accounting for metabolic, thyroid and hormonal factors. Built for gradual, maintainable change — not crash protocols.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Diet &amp; Nutrition Planning</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>A personalised plan based on your routine, food preferences, regional cuisine and any medical conditions. Designed to fit the way you actually eat, which is what makes a plan last.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Muscle Building</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Structured guidance on training load, protein intake and recovery for lean mass gain. Progress is tracked against composition measurements rather than appearance alone.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Lifestyle Consultation</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>A review of sleep, stress, activity and daily habits — the factors that quietly drive skin, hair and weight outcomes. Frequently the missing piece when treatment results have plateaued.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-
-          <details class="service-item">
-            <summary>
-              <span class="service-item__name">Online Fitness Consultation</span>
-              <span class="service-item__right">
-                <span class="tag">Consultation required</span>
-                <svg class="service-item__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="service-item__body">
-              <p>Remote consultation and follow-up for patients outside Pune or those who cannot attend in person. Suitable for plan reviews and progress check-ins; the initial assessment is better done at the clinic where measurement is possible.</p>
-              <p class="service-item__meta"><span>Duration: <span class="pending">[duration TBC]</span></span></p>
-            </div>
-          </details>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <section class="cta-banner">
+  <!-- ══════════════════════════════════════════════════════════════════
+       PRICING — PLACEHOLDER STATUS
+       Every service is marked "Consultation required" rather than carrying a
+       price. No prices have been confirmed by the client, so none have been
+       invented: publishing an unconfirmed figure for a medical treatment is a
+       commitment the clinic may not want. To add pricing, replace the
+       "Consultation required" tag in each <details> summary with the agreed
+       starting price. Session durations are marked [DURATION TBC] pending the
+       doctor's confirmation.
+       ══════════════════════════════════════════════════════════════════ -->
+
+  <section class="section section--lg section--beige">
     <div class="wrap">
-      <h2 class="cta-banner__title reveal-text">Not sure which treatment you need?</h2>
-      <p class="cta-banner__text">That is exactly what the first consultation is for. Book a session and we will work it out together.</p>
-      <a class="btn btn--light" data-magnetic href="contact.html">Book a Consultation</a>
+      <!-- BUILD NOTE (not shown to visitors): replace every [DURATION TBC] and the
+           "Consultation required" tags with confirmed values before launch. -->
+      <p class="pending-note">Pricing and session length are confirmed at your consultation, once the doctor has assessed what you actually need.</p>
+
+      <div class="svc-group" id="skin">
+        <div class="svc-group__head reveal">
+          <p class="eyebrow">Dermatology</p>
+          <h2 class="h-section reveal-text">Skin &amp; Dermatology</h2>
+          <p class="lead">Medical and cosmetic dermatology for active conditions, texture, tone and ageing concerns.</p>
+        </div>
+
+        <div class="svc-list reveal">
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Acne Treatment</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Medical management of active acne, from comedonal breakouts to inflammatory and hormonal patterns. Treatment begins by identifying the trigger — hormonal, bacterial, dietary or product-related — and builds a topical, oral or in-clinic plan from there.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Acne Scar Reduction</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Resurfacing for post-acne scarring and uneven texture. The approach depends on scar type — boxcar, rolling or icepick — and typically runs over a planned series of sessions rather than a single visit.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Pigmentation Treatment</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Targeted care for melasma, sun-induced pigmentation and post-inflammatory marks. Includes assessing the depth of pigment, which determines how much improvement is realistically achievable and over what timeframe.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Skin Brightening</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Treatments aimed at a more even tone and improved clarity. Focused on correcting dullness and patchiness rather than altering your natural complexion.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Anti-Ageing Treatments</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Management of fine lines, loss of firmness and age-related volume change. Plans are built to keep expression natural, with a clear explanation of what each option can and cannot change.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Chemical Peels</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Controlled exfoliation to improve texture, congestion, pigmentation and dullness. Peel strength and formulation are matched to your skin type and the downtime you can accommodate.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Mole &amp; Wart Removal</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Minor in-clinic removal of moles, warts, skin tags and similar lesions. Every lesion is clinically assessed first; anything suspicious is referred for investigation before any cosmetic removal.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Laser Skin Treatment</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Laser-based resurfacing and toning for texture, pigmentation and overall skin quality. Suitability depends on your skin type and recent sun exposure, both assessed beforehand.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Under Eye Treatment</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Care for dark circles, hollowing and crepey texture. The cause matters here — pigment, shadow from volume loss and vascular darkness each respond to different treatments, so the consultation separates them first.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="svc-group" id="hair">
+        <div class="svc-group__head reveal">
+          <p class="eyebrow">Trichology</p>
+          <h2 class="h-section reveal-text">Hair &amp; Trichology</h2>
+          <p class="lead">Diagnosis-led hair and scalp care, from hair fall investigation through to restoration planning.</p>
+        </div>
+
+        <div class="svc-list reveal">
+          <details class="svc">
+            <summary>
+              <span class="svc__name">PRP Therapy for Hair Loss</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Platelet-rich plasma prepared from your own blood sample and delivered into the scalp to support existing follicles. Usually planned as a course of sessions, with response reviewed at set intervals.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Hair Fall Diagnosis</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>A structured investigation into why hair is shedding or thinning — scalp examination, pattern assessment and, where indicated, blood work for nutritional, thyroid or hormonal causes. The recommended starting point for any hair concern.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Dandruff &amp; Scalp Care</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Treatment for flaking, itching, seborrhoeic dermatitis and other scalp conditions. Persistent dandruff frequently drives hair fall, so the scalp is treated as part of the wider hair plan.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Mesotherapy</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Micro-delivery of a targeted nutrient and medication blend into the scalp to support follicle health. Often combined with other treatments as part of a staged hair programme.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Laser Hair Reduction</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Laser treatment to reduce unwanted hair growth on the face or body. Results build across a planned series of sessions; the number required varies with hair colour, thickness and the area treated.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Hair Transplant Consultation</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>An honest assessment of whether a transplant suits you — donor area quality, graft estimates, expected density and realistic outcomes. Many patients are advised to stabilise ongoing loss medically before considering surgery.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Hair Spa</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>A conditioning and scalp-nourishing treatment for dryness, dullness and product build-up. Supportive care rather than a medical treatment, best used alongside a clinical plan where hair fall is also a concern.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="svc-group" id="fitness">
+        <div class="svc-group__head reveal">
+          <p class="eyebrow">Fitness Medicine</p>
+          <h2 class="h-section reveal-text">Fitness &amp; Wellness</h2>
+          <p class="lead">Medically supervised fitness and nutrition, built around measurement rather than guesswork.</p>
+        </div>
+
+        <div class="svc-list reveal">
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Body Composition Analysis</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Measurement of fat mass, lean muscle, water balance and distribution — the baseline that makes progress measurable. Far more useful than bodyweight alone, and repeated periodically to track real change.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Weight Management</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>A medically supervised programme for sustainable weight loss or gain, accounting for metabolic, thyroid and hormonal factors. Built for gradual, maintainable change rather than crash protocols.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Diet &amp; Nutrition Planning</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>A personalised plan based on your routine, food preferences, regional cuisine and any medical conditions. Designed to fit the way you actually eat, which is what makes a plan last.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Muscle Building</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Structured guidance on training load, protein intake and recovery for lean mass gain. Progress is tracked against composition measurements rather than appearance alone.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Lifestyle Consultation</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>A review of sleep, stress, activity and daily habits — the factors that quietly drive skin, hair and weight outcomes. Frequently the missing piece when results have plateaued.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+
+          <details class="svc">
+            <summary>
+              <span class="svc__name">Online Fitness Consultation</span>
+              <span class="svc__right">
+                <span class="tag">Consultation required</span>
+                <svg class="svc__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="svc__body">
+              <p>Remote consultation and follow-up for patients outside Pune or unable to attend in person. Suitable for plan reviews and progress check-ins; the initial assessment is better done at the clinic where measurement is possible.</p>
+              <p class="svc__meta"><span>Duration: <span class="pending">[DURATION TBC]</span></span></p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta section--lg">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="eyebrow">Begin</p>
+      <h2 class="cta__title reveal-text">Not Sure Which Treatment You Need?</h2>
+      <p class="cta__text">That is exactly what the first consultation is for. Book a session and we will work it out together.</p>
+      <a class="btn btn--primary" data-magnetic href="contact.html#booking">Book a Consultation</a>
     </div>
   </section>
 
@@ -509,9 +535,9 @@
       <div>
         <h3 class="footer__heading">Services</h3>
         <ul class="footer__list">
-          <li><a href="services.html#skin">Skin &amp; Dermatology</a></li>
-          <li><a href="services.html#hair">Hair &amp; Trichology</a></li>
-          <li><a href="services.html#fitness">Fitness &amp; Wellness</a></li>
+          <li><a href="services.html#skin">Skin</a></li>
+          <li><a href="services.html#hair">Hair</a></li>
+          <li><a href="services.html#fitness">Fitness</a></li>
         </ul>
       </div>
 
@@ -532,9 +558,29 @@
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (number pending)" title="WhatsApp — number pending before launch">
+<!-- PENDING: replace 91XXXXXXXXXX with the clinic's real WhatsApp number -->
+<a class="wa-float" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (number pending)" title="WhatsApp — number pending before launch">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8 8 0 1112 20a8 8 0 01-4-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
 </a>
+
+<nav class="tabbar" aria-label="Quick navigation">
+  <a class="tabbar__item" href="index.html" data-nav="index">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 4l9 6.5"/><path d="M5 10v9h14v-9"/></svg>
+    <span>Home</span>
+  </a>
+  <a class="tabbar__item" href="services.html" data-nav="services">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+    <span>Services</span>
+  </a>
+  <a class="tabbar__item tabbar__item--book" href="contact.html#booking">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+    <span>Book</span>
+  </a>
+  <a class="tabbar__item" href="contact.html" data-nav="contact">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <span>Contact</span>
+  </a>
+</nav>
 
 <script src="script.js"></script>
 </body>
