@@ -56,6 +56,34 @@ document.querySelectorAll('[data-nav]').forEach((el) => {
   el.classList.toggle('is-active', el.dataset.nav === page);
 });
 
+/* Bottom tab bar: slide the gold pill to the tab matching this page. The
+   homepage has no tab of its own, so the pill stays hidden there. */
+
+const tabRow = document.querySelector('.tabbar__row');
+
+if (tabRow) {
+  const tabs = [...tabRow.querySelectorAll('.tabbar__item')];
+
+  const movePill = (index) => {
+    if (index < 0) {
+      tabRow.classList.remove('has-active');
+      return;
+    }
+    tabRow.style.setProperty('--tab', String(index));
+    tabRow.classList.add('has-active');
+  };
+
+  movePill(tabs.findIndex((t) => t.classList.contains('is-active')));
+
+  // Move on tap too, so the indicator responds before the next page paints
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.classList.toggle('is-active', t === tab));
+      movePill(index);
+    });
+  });
+}
+
 /* Smooth scroll for in-page anchors */
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
