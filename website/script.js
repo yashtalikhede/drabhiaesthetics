@@ -56,31 +56,27 @@ document.querySelectorAll('[data-nav]').forEach((el) => {
   el.classList.toggle('is-active', el.dataset.nav === page);
 });
 
-/* Bottom tab bar: slide the gold pill to the tab matching this page. The
-   homepage has no tab of its own, so the pill stays hidden there. */
+/* Bottom tab bar: the gold pill sits behind the tab for the current page.
+   Order is Home, About, Services, Book, Contact — Book has no page of its
+   own, so contact.html lights Contact (index 4) rather than Book. */
 
-const tabRow = document.querySelector('.tabbar__row');
+const TAB_INDEX = { index: 0, about: 1, services: 2, contact: 4 };
 
-if (tabRow) {
-  const tabs = [...tabRow.querySelectorAll('.tabbar__item')];
+const tabbar = document.querySelector('.tabbar');
 
-  const movePill = (index) => {
-    if (index < 0) {
-      tabRow.classList.remove('has-active');
-      return;
-    }
-    tabRow.style.setProperty('--tab', String(index));
-    tabRow.classList.add('has-active');
+if (tabbar) {
+  const setTab = (i) => {
+    tabbar.style.setProperty('--tab-index', String(i));
+    [...tabbar.querySelectorAll('.tabbar__item')].forEach((t, n) => {
+      t.classList.toggle('is-active', n === i);
+    });
   };
 
-  movePill(tabs.findIndex((t) => t.classList.contains('is-active')));
+  setTab(TAB_INDEX[page] ?? 0);
 
-  // Move on tap too, so the indicator responds before the next page paints
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.classList.toggle('is-active', t === tab));
-      movePill(index);
-    });
+  // Respond on tap too, before the next page paints
+  [...tabbar.querySelectorAll('.tabbar__item')].forEach((tab, i) => {
+    tab.addEventListener('click', () => setTab(i));
   });
 }
 
@@ -222,6 +218,16 @@ document.querySelectorAll('.ticker__track').forEach((track) => {
   if (track.dataset.cloned) return;
   track.dataset.cloned = 'true';
   [...track.children].forEach((item) => track.append(item.cloneNode(true)));
+});
+
+/* Booking shortcuts preselect the matching service on the enquiry form.
+   The generic anchor handler above does the smooth scroll. */
+
+document.querySelectorAll('[data-service]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const select = document.getElementById('service');
+    if (select) select.value = link.dataset.service;
+  });
 });
 
 /* Enquiry form */

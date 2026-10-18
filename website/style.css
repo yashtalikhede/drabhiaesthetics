@@ -628,69 +628,58 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   text-decoration: none;
 }
 
-/* ---------- Mobile bottom tab bar ---------- */
+/* ---------- Mobile bottom tab bar (5 tabs) ---------- */
 
 .tabbar {
   display: none;
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
-  z-index: 95;
-  grid-template-columns: repeat(4, 1fr);
-  background-color: rgba(13, 13, 13, 0.94);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-top: 1px solid var(--hairline-dark);
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--charcoal);
+  border-top: 1px solid var(--gold);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* The gold pill slides to whichever tab matches the current page, instead of
-   one tab wearing a permanent gold background that reads as "always selected". */
-.tabbar__row {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.tabbar__pill {
+/* Gold pill sits behind the active tab; JS sets --tab-index per page */
+.tabbar::before {
+  content: '';
   position: absolute;
-  top: 5px;
-  bottom: 5px;
+  top: 10px;
   left: 0;
-  width: 25%;
+  width: 20%;
+  height: 40px;
   background-color: var(--gold);
-  border-radius: 3px;
-  opacity: 0;
-  transform: translateX(calc(var(--tab, 0) * 100%));
-  transition: transform 0.32s var(--ease-out), opacity 0.2s ease;
+  border-radius: 8px;
+  transform: translateX(calc(var(--tab-index, 0) * 100%));
+  transition: transform 0.3s ease;
   pointer-events: none;
 }
 
-.tabbar__row.has-active .tabbar__pill { opacity: 1; }
-
 .tabbar__item {
+  position: relative;
+  z-index: 1;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  position: relative;
-  z-index: 1;
-  min-height: 58px;
-  padding: 8px 4px;
+  gap: 4px;
+  height: 60px;
   text-decoration: none;
   color: var(--text-muted-dark);
-  font-size: 0.75rem;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  line-height: 1;
   transition: color var(--t-base) ease;
 }
 
 .tabbar__item svg {
-  width: 21px;
-  height: 21px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -698,11 +687,8 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   stroke-linejoin: round;
 }
 
+/* The pill is gold, so the active label must be ink to stay readable */
 .tabbar__item.is-active { color: var(--jet); }
-
-/* Book stays visually distinct through colour alone — no standing fill */
-.tabbar__item--book { color: var(--gold); }
-.tabbar__item--book.is-active { color: var(--jet); }
 
 /* ---------- Hero ---------- */
 
@@ -1715,54 +1701,11 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 
 .btn[aria-busy='true'] { opacity: 0.7; pointer-events: none; }
 
-/* ---------- WhatsApp float ---------- */
 
-.wa-float {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 92;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  background-color: var(--jet);
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  color: var(--gold);
-  box-shadow: var(--shadow-lift);
-  transition: background-color var(--t-base) ease, color var(--t-base) ease;
-}
 
-.wa-float svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
-.wa-float::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 50%;
-  border: 1px solid var(--gold);
-}
 
-.js .wa-float::before { animation: wa-pulse 2.8s ease-out infinite; }
 
-.wa-float:hover,
-.wa-float:focus-visible { background-color: var(--gold); color: var(--jet); }
-
-@keyframes wa-pulse {
-  0%   { transform: scale(1); opacity: 0.5; }
-  70%  { transform: scale(1.38); opacity: 0; }
-  100% { opacity: 0; }
-}
 
 /* ---------- Scroll reveal ---------- */
 
@@ -1825,7 +1768,6 @@ textarea.field__input { min-height: 112px; resize: vertical; }
   .js .divider line { stroke-dashoffset: 0; }
   .js .ticker__track { animation: none; }
   .js .dust span { animation: none; display: none; }
-  .js .wa-float::before { animation: none; }
   .preloader, .js .preloader { display: none; }
   .cursor-dot, .cursor-ring { display: none; }
 }
@@ -1835,11 +1777,10 @@ textarea.field__input { min-height: 112px; resize: vertical; }
    ============================================================ */
 
 @media (max-width: 47.99rem) {
-  body { padding-bottom: 58px; }
+  body { padding-bottom: 60px; }
 
-  .tabbar { display: grid; }
+  .tabbar { display: flex; }
 
-  .wa-float { bottom: calc(58px + env(safe-area-inset-bottom) + 12px); }
 
   body.is-past-hero .bookbar { display: flex; }
 
@@ -1895,7 +1836,6 @@ textarea.field__input { min-height: 112px; resize: vertical; }
   .quickbook__btn { flex-direction: column; align-items: flex-start; min-height: 128px; }
   .map iframe { height: 360px; }
   .trust { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 56px)); padding-bottom: calc(var(--s5) + 56px); }
-  .wa-float { right: 28px; bottom: 28px; width: 56px; height: 56px; }
 }
 
 /* ============================================================

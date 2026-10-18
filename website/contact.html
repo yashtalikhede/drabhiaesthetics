@@ -66,38 +66,33 @@
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="index.html">Home</a> &nbsp;&rsaquo;&nbsp; <span>Contact</span>
       </nav>
-      <p class="eyebrow">Two Taps to Book</p>
+      <p class="eyebrow">Two taps to book</p>
       <h1 class="page-head__title reveal-text">Book a Consultation</h1>
-      <p class="lead">Pick your area of concern and WhatsApp opens with the message already written. Or use the enquiry form below.</p>
+      <p class="lead">Pick your area of concern and we will take you to the enquiry form with it already selected.</p>
 
-      <!-- PENDING: replace 91XXXXXXXXXX in all four WhatsApp links before launch -->
       <div class="quickbook">
-        <a class="quickbook__btn" href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Skin%20consultation." target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8 8 0 1112 20a8 8 0 01-4-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+        <a class="quickbook__btn" href="#enquiry" data-service="Skin">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14"/><path d="M6 12.5l6 6 6-6"/></svg>
           <span>
-            <span class="quickbook__label">Skin</span>
-            <span class="quickbook__hint">Opens WhatsApp</span>
+            <span class="quickbook__label">Enquire about Skin</span>
+            <span class="quickbook__hint">Opens the enquiry form</span>
           </span>
         </a>
-        <a class="quickbook__btn" href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Hair%20consultation." target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8 8 0 1112 20a8 8 0 01-4-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+        <a class="quickbook__btn" href="#enquiry" data-service="Hair">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14"/><path d="M6 12.5l6 6 6-6"/></svg>
           <span>
-            <span class="quickbook__label">Hair</span>
-            <span class="quickbook__hint">Opens WhatsApp</span>
+            <span class="quickbook__label">Enquire about Hair</span>
+            <span class="quickbook__hint">Opens the enquiry form</span>
           </span>
         </a>
-        <a class="quickbook__btn" href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Fitness%20consultation." target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8 8 0 1112 20a8 8 0 01-4-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+        <a class="quickbook__btn" href="#enquiry" data-service="Fitness">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14"/><path d="M6 12.5l6 6 6-6"/></svg>
           <span>
-            <span class="quickbook__label">Fitness</span>
-            <span class="quickbook__hint">Opens WhatsApp</span>
+            <span class="quickbook__label">Enquire about Fitness</span>
+            <span class="quickbook__hint">Opens the enquiry form</span>
           </span>
         </a>
       </div>
-
-      <!-- BUILD NOTE (not shown to visitors): the three buttons above and the
-           floating WhatsApp button all point at 91XXXXXXXXXX. Replace all four
-           with the clinic's real number before launch. -->
     </div>
   </section>
 
@@ -106,7 +101,7 @@
       <div class="contact-grid reveal">
 
         <div>
-          <p class="eyebrow">Find Us</p>
+          <p class="eyebrow">Find us</p>
           <h2 class="h-section reveal-text">Clinic Details</h2>
           <svg class="divider" viewBox="0 0 72 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="72" y2="0.5"/></svg>
 
@@ -119,14 +114,6 @@
               </div>
             </div>
 
-            <!-- PENDING: swap the placeholder into a real tel: link before launch -->
-            <div>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 006 6l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.7a2 2 0 012-2.2z"/></svg>
-              <div>
-                <dt>Phone</dt>
-                <dd><span class="pending">+91 XXXXX XXXXX</span></dd>
-              </div>
-            </div>
 
             <div>
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
@@ -160,9 +147,9 @@
           </div>
         </div>
 
-        <div>
+        <div id="enquiry">
           <div class="form-card">
-            <p class="eyebrow">Prefer to Write?</p>
+            <p class="eyebrow">Prefer to write?</p>
             <h2 class="h-sub">Send an Enquiry</h2>
             <svg class="divider" viewBox="0 0 72 1" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="72" y2="0.5"/></svg>
 
@@ -257,7 +244,6 @@
         <ul class="footer__list">
           <li>D-Block, 1st Floor, 101-B,<br>Streets of Europe, Hinjawadi,<br>Pune &ndash; 411057</li>
           <li><a href="mailto:drabhiaesthetics2807@gmail.com">drabhiaesthetics2807@gmail.com</a></li>
-          <li>Phone<span class="reserved">Number coming soon</span></li>
         </ul>
       </div>
     </div>
@@ -269,31 +255,28 @@
   </div>
 </footer>
 
-<!-- PENDING: replace 91XXXXXXXXXX with the clinic's real WhatsApp number -->
-<a class="wa-float" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (number pending)" title="WhatsApp — number pending before launch">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8 8 0 1112 20a8 8 0 01-4-1.1z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></svg>
-</a>
 
 <nav class="tabbar" aria-label="Quick navigation">
-  <div class="tabbar__row">
-    <span class="tabbar__pill" aria-hidden="true"></span>
-    <a class="tabbar__item" href="about.html" data-nav="about">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>
-      <span>About</span>
-    </a>
-    <a class="tabbar__item" href="services.html" data-nav="services">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
-      <span>Services</span>
-    </a>
-    <a class="tabbar__item tabbar__item--book" href="#booking">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
-      <span>Book</span>
-    </a>
-    <a class="tabbar__item" href="contact.html" data-nav="contact">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-      <span>Contact</span>
-    </a>
-  </div>
+  <a class="tabbar__item" href="index.html" data-nav="index">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5L12 4l9 6.5"/><path d="M5 10v9h14v-9"/></svg>
+    <span>Home</span>
+  </a>
+  <a class="tabbar__item" href="about.html" data-nav="about">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20a7.5 7.5 0 0115 0"/></svg>
+    <span>About</span>
+  </a>
+  <a class="tabbar__item" href="services.html" data-nav="services">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+    <span>Services</span>
+  </a>
+  <a class="tabbar__item" href="contact.html#booking">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>
+    <span>Book</span>
+  </a>
+  <a class="tabbar__item" href="contact.html" data-nav="contact">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <span>Contact</span>
+  </a>
 </nav>
 
 <script src="script.js"></script>
