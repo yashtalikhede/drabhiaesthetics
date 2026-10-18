@@ -340,12 +340,12 @@ if (toTop) {
 
 /* 3. Theme toggle — the saved value is applied pre-paint by the head script */
 
-const themeToggle = document.querySelector('.theme-toggle');
+const themeToggle = document.querySelector('.theme-pill');
 
 if (themeToggle) {
   const sync = () => {
     const dark = document.documentElement.dataset.theme === 'dark';
-    themeToggle.setAttribute('aria-pressed', String(dark));
+    themeToggle.setAttribute('aria-checked', String(dark));
     themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   };
 
@@ -381,64 +381,6 @@ if (photoFrames.length) {
   }, { threshold: 0.3 });
 
   photoFrames.forEach((f) => wiper.observe(f));
-}
-
-/* 8. Text scramble — only the marked headings, and only after the mask
-   reveal has finished so the two effects do not fight. */
-
-const scrambleTargets = document.querySelectorAll('[data-scramble]');
-
-if (scrambleTargets.length && enhance) {
-  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-  const scramble = (el) => {
-    const node = el.querySelector('span') || el;
-    const original = node.textContent;
-    const start = performance.now();
-    const settleAt = [...original].map((_, i) => 50 + i * 30);
-    const total = Math.min(Math.max(...settleAt, 400), 500);
-
-    const tick = (now) => {
-      const elapsed = now - start;
-      node.textContent = [...original]
-        .map((ch, i) => {
-          if (ch === ' ') return ' ';
-          if (elapsed >= settleAt[i]) return ch;
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        })
-        .join('');
-
-      if (elapsed < total) {
-        requestAnimationFrame(tick);
-      } else {
-        node.textContent = original;
-        el.classList.add('scrambled');
-      }
-    };
-
-    requestAnimationFrame(tick);
-  };
-
-  const scrambler = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      scrambler.unobserve(el);
-
-      // Wait for the headline mask wipe to finish before scrambling
-      const inner = el.querySelector('span');
-      if (inner && el.classList.contains('reveal-text')) {
-        let fired = false;
-        const go = () => { if (!fired) { fired = true; scramble(el); } };
-        inner.addEventListener('animationend', go, { once: true });
-        setTimeout(go, 1100);
-      } else {
-        scramble(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  scrambleTargets.forEach((el) => scrambler.observe(el));
 }
 
 /* 2. Page transitions — fade out, navigate, fade in */

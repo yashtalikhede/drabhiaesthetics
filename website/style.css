@@ -30,6 +30,17 @@
   --surface-raised: #EDE4D3;
   --surface-glass: rgba(255, 255, 255, 0.94);
 
+  /* The hero is no longer hardcoded dark: it follows the theme like
+     everything else, so light mode is genuinely light top to bottom. */
+  --hero-bg: var(--surface-sunken);
+  --hero-fg: var(--ink);
+  --hero-muted: var(--ink-muted);
+  --hero-line: var(--hairline);
+  --trust-bg: var(--surface-raised);
+  --trust-fg: var(--ink);
+  --dust-peak: 0.3;
+  --grain-opacity: 0.02;
+
   --hairline: rgba(26, 26, 26, 0.12);
   /* Interactive component boundaries need 3:1 (WCAG 1.4.11); the decorative
      hairline above is ~1.3:1 and is only used for dividers and containers. */
@@ -340,7 +351,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -374,8 +385,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 @keyframes dust-rise {
   0%   { transform: translateY(0) translateX(0); opacity: 0; }
-  12%  { opacity: 0.55; }
-  80%  { opacity: 0.3; }
+  12%  { opacity: var(--dust-peak); }
+  80%  { opacity: calc(var(--dust-peak) * 0.55); }
   100% { transform: translateY(-78vh) translateX(16px); opacity: 0; }
 }
 
@@ -475,16 +486,16 @@ body.has-cursor select { cursor: auto; }
 /* The sticky header sits above the hero in flow, so a literally transparent
    bar would expose the white body background behind it. Matching the hero's
    own colour gives the intended seamless dark opening instead. */
-body.has-dark-hero .site-header {
+[data-theme='dark'] body.has-dark-hero .site-header {
   background-color: var(--charcoal);
   border-bottom-color: transparent;
 }
 
-body.has-dark-hero .site-header .nav__wordmark { color: var(--beige-light); }
-body.has-dark-hero .site-header .nav__link { color: var(--beige); }
-body.has-dark-hero .site-header .nav__link:hover,
-body.has-dark-hero .site-header .nav__link.is-active { color: var(--gold); }
-body.has-dark-hero .site-header .nav__toggle span { background-color: var(--surface-sunken); }
+[data-theme='dark'] body.has-dark-hero .site-header .nav__wordmark { color: var(--beige-light); }
+[data-theme='dark'] body.has-dark-hero .site-header .nav__link { color: var(--beige); }
+[data-theme='dark'] body.has-dark-hero .site-header .nav__link:hover,
+[data-theme='dark'] body.has-dark-hero .site-header .nav__link.is-active { color: var(--gold); }
+[data-theme='dark'] body.has-dark-hero .site-header .nav__toggle span { background-color: var(--surface-sunken); }
 
 body.has-dark-hero.is-past-hero .site-header {
   background-color: rgba(255, 255, 255, 0.92);
@@ -600,7 +611,7 @@ body.has-dark-hero.is-past-hero .site-header .nav__toggle span { background-colo
   transition: grid-template-rows var(--t-base) var(--ease-out);
 }
 
-body.has-dark-hero:not(.is-past-hero) .nav__drawer { background-color: var(--jet); }
+[data-theme='dark'] body.has-dark-hero:not(.is-past-hero) .nav__drawer { background-color: var(--jet); }
 
 .nav__drawer.is-open { grid-template-rows: 1fr; }
 .nav__drawer-inner { overflow: hidden; }
@@ -612,7 +623,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer { background-color: var(--jet
   border-bottom: 1px solid var(--hairline);
 }
 
-body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
+[data-theme='dark'] body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   border-bottom-color: var(--hairline-dark);
 }
 
@@ -703,8 +714,8 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .hero {
   position: relative;
   isolation: isolate;
-  background-color: var(--charcoal);
-  color: var(--text-on-dark);
+  background-color: var(--hero-bg);
+  color: var(--hero-fg);
   padding-block: clamp(56px, 10vw, 96px) clamp(80px, 12vw, 128px);
   overflow: hidden;
 }
@@ -718,7 +729,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 }
 
 .hero__title {
-  color: var(--white);
+  color: var(--hero-fg);
   text-wrap: balance;
 }
 
@@ -727,7 +738,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   max-width: 46ch;
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   line-height: 1.7;
-  color: var(--text-muted-dark);
+  color: var(--hero-muted);
   text-wrap: pretty;
 }
 
@@ -742,8 +753,8 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .trust {
   position: relative;
   z-index: 1;
-  background-color: var(--jet);
-  border-top: 1px solid var(--hairline-dark);
+  background-color: var(--trust-bg);
+  border-top: 1px solid var(--hero-line);
   padding-block: var(--s5);
   /* diagonal hand-off into the light body below */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 32px));
@@ -778,7 +789,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   font-optical-sizing: auto;
   font-size: 1.0625rem;
   letter-spacing: -0.01em;
-  color: var(--beige-light);
+  color: var(--trust-fg);
 }
 
 /* ---------- Placeholder frames ---------- */
@@ -842,7 +853,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 
 /* A frame holding a real photograph: keep the gold edge, drop the watermark
    furniture that only makes sense on an empty placeholder. */
-.frame--photo { padding: 0; background-color: var(--charcoal); }
+.frame--photo { padding: 0; background-color: var(--surface-raised); }
 .frame--photo::before,
 .frame--photo::after { display: none; }
 
@@ -1970,116 +1981,20 @@ textarea.field__input { min-height: 112px; resize: vertical; }
    dark-surface muted tone (6.4:1) instead of --ink-muted (2.6:1). */
 .site-footer .reserved { color: var(--text-muted-dark); }
 
-/* ---------- Social side rail ---------- */
-
-.rail {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 95;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Hairline linking the two circles, sitting in the gap */
-.rail::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  width: 1px;
-  height: 12px;
-  background-color: var(--gold);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.rail__link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background-color: transparent;
-  color: var(--gold);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-/* Expands the hit area to 44px without growing the drawn circle */
-.rail__link::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-}
-
-.rail__link svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.rail__link:hover,
-.rail__link:focus-visible {
-  background-color: var(--gold);
-  color: var(--jet);
-  transform: scale(1.1);
-}
-
-/* Held back until the hero is behind the visitor, so it never competes with
-   the opening. Without JS it is simply visible. */
-.js .rail {
-  opacity: 0;
-  transform: translateY(-50%) translateX(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-}
-
-.js body.is-past-hero .rail {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-  pointer-events: auto;
-}
-
-@media (max-width: 47.99rem) {
-  .rail {
-    top: auto;
-    bottom: calc(68px + env(safe-area-inset-bottom));
-    right: 16px;
-    transform: none;
-    gap: 8px;
-  }
-
-  .rail::before { top: 36px; height: 8px; }
-
-  .rail__link { width: 36px; height: 36px; }
-  .rail__link::after { inset: -4px; }
-  .rail__link svg { width: 16px; height: 16px; }
-
-  .js .rail { transform: translateX(20px); }
-  .js body.is-past-hero .rail { transform: translateX(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rail__link:hover,
-  .rail__link:focus-visible { transform: none; }
-}
-
 /* ============================================================
    Dark mode — flips light surfaces only. Permanently-dark
    sections (hero, CTA band, footer) are already correct.
    ============================================================ */
 
 [data-theme='dark'] {
+  --hero-bg: var(--charcoal);
+  --hero-fg: #FFFFFF;
+  --hero-muted: var(--text-muted-dark);
+  --hero-line: var(--hairline-dark);
+  --trust-bg: var(--jet);
+  --trust-fg: var(--beige-light);
+  --dust-peak: 0.55;
+  --grain-opacity: 0.035;
   --surface: #0D0D0D;
   --surface-sunken: #1E1E1E;
   --surface-raised: #161616;
@@ -2172,7 +2087,7 @@ textarea.field__input { min-height: 112px; resize: vertical; }
     backdrop-filter: blur(16px) saturate(1.2);
   }
 
-  body.has-dark-hero .site-header {
+  [data-theme='dark'] body.has-dark-hero .site-header {
     background-color: rgba(13, 13, 13, 0.7);
   }
 
@@ -2181,7 +2096,7 @@ textarea.field__input { min-height: 112px; resize: vertical; }
   }
 
   [data-theme='dark'] .site-header,
-  [data-theme='dark'] body.has-dark-hero.is-past-hero .site-header {
+  body.has-dark-hero.is-past-hero .site-header {
     background-color: rgba(13, 13, 13, 0.7);
   }
 }
@@ -2199,7 +2114,7 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 .to-top {
   position: fixed;
   right: 20px;
-  bottom: 80px;
+  bottom: 24px;
   z-index: 94;
   display: inline-flex;
   align-items: center;
@@ -2247,9 +2162,8 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 @media (max-width: 47.99rem) {
   .to-top {
     right: 16px;
-    /* rail occupies 68px->148px from the bottom (two 36px circles + 8px gap),
-       so 160px clears its top edge with a 12px gap */
-    bottom: calc(160px + env(safe-area-inset-bottom));
+    /* the social rail is gone; this now only has to clear the 60px tab bar */
+    bottom: calc(72px + env(safe-area-inset-bottom));
     width: 36px;
     height: 36px;
   }
@@ -2315,3 +2229,113 @@ textarea.field__input { min-height: 112px; resize: vertical; }
   .cursor-glow { display: none; }
   .to-top { transition: none; }
 }
+
+/* ---------- Navbar social icons ---------- */
+
+.nav__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--gold);
+  transition: opacity var(--t-base) ease, transform var(--t-base) ease;
+}
+
+.nav__social svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav__social a:hover,
+.nav__social a:focus-visible { opacity: 0.75; transform: scale(1.1); }
+
+/* ---------- Theme pill ---------- */
+
+.theme-pill {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  width: 56px;
+  height: 28px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.theme-pill__dot {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+[data-theme='dark'] .theme-pill { background-color: rgba(232, 213, 168, 0.06); }
+[data-theme='dark'] .theme-pill__dot { transform: translateX(28px); }
+
+.theme-pill__icon {
+  position: absolute;
+  display: inline-flex;
+  color: var(--gold-ink);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.theme-pill__icon svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Light: dot sits left, the moon on the right shows what you switch to.
+   Dark: dot slides right, the sun on the left does the same. */
+.theme-pill__icon--moon { right: 7px; }
+.theme-pill__icon--sun { left: 7px; display: none; }
+
+[data-theme='dark'] .theme-pill__icon--moon { display: none; }
+[data-theme='dark'] .theme-pill__icon--sun { display: inline-flex; color: var(--gold); }
+
+@media (max-width: 47.99rem) {
+  .nav__social { gap: 8px; }
+  .nav__social a { width: 36px; height: 36px; }
+  .nav__social svg { width: 18px; height: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-pill__dot { transition: none; }
+  .nav__social a:hover { transform: none; }
+}
+
+/* ---------- Narrow phones: keep the header on one row ---------- */
+
+@media (max-width: 30rem) {
+  /* wordmark yields so the social icons, pill and logo always fit the gutter */
+  .nav__wordmark { display: none; }
+  .nav__social { gap: 6px; }
+  .nav__social a { width: 32px; height: 32px; }
+}
+
+/* The actions cluster must never bleed past the wrap's gutter */
+.nav__actions { min-width: 0; }
