@@ -177,46 +177,49 @@ if (enhance) {
   });
 }
 
-/* Custom cursor — decorative only, fine pointers only */
+/* 7. Cursor glow — replaces the old dot + ring. One cursor effect, not two.
+   Fine pointers only, and it dims over light sections where it would read wrong. */
 
 if (enhance) {
-  const dot = document.createElement('div');
-  const ring = document.createElement('div');
-  dot.className = 'cursor-dot';
-  ring.className = 'cursor-ring';
-  dot.setAttribute('aria-hidden', 'true');
-  ring.setAttribute('aria-hidden', 'true');
-  document.body.append(dot, ring);
-  document.body.classList.add('has-cursor');
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  glow.setAttribute('aria-hidden', 'true');
+  document.body.append(glow);
 
   let tx = innerWidth / 2;
   let ty = innerHeight / 2;
-  let rx = tx;
-  let ry = ty;
+  let gx = tx;
+  let gy = ty;
+  let moved = false;
 
   addEventListener('mousemove', (e) => {
     tx = e.clientX;
     ty = e.clientY;
-    dot.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    if (!moved) {
+      moved = true;
+      glow.classList.add('is-on');
+    }
   }, { passive: true });
 
+  // Dark sections are where the warm light belongs; elsewhere it is dialled back
+  const overDark = () => {
+    const el = document.elementFromPoint(gx, gy);
+    if (!el) return false;
+    if (document.documentElement.dataset.theme === 'dark') return true;
+    return !!el.closest('.hero, .trust, .cta, .site-footer, .tabbar');
+  };
+
   const loop = () => {
-    rx += (tx - rx) * 0.16;
-    ry += (ty - ry) * 0.16;
-    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+    gx += (tx - gx) * 0.08;
+    gy += (ty - gy) * 0.08;
+    glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+    glow.classList.toggle('is-light', !overDark());
     requestAnimationFrame(loop);
   };
   requestAnimationFrame(loop);
 
-  const hot = 'a, button, summary, input, textarea, select, [data-magnetic]';
-  document.addEventListener('mouseover', (e) => {
-    if (e.target.closest(hot)) ring.classList.add('is-hovering');
-  });
-  document.addEventListener('mouseout', (e) => {
-    if (e.target.closest(hot)) ring.classList.remove('is-hovering');
-  });
-  document.addEventListener('mouseleave', () => document.body.classList.remove('has-cursor'));
-  document.addEventListener('mouseenter', () => document.body.classList.add('has-cursor'));
+  addEventListener('mouseleave', () => glow.classList.remove('is-on'));
+  addEventListener('mouseenter', () => { if (moved) glow.classList.add('is-on'); });
 }
 
 /* Before / after compare — the range input is the real control, so mouse,
@@ -292,5 +295,187 @@ if (form) {
       submitBtn.removeAttribute('aria-busy');
       submitBtn.textContent = 'Send Enquiry';
     }
+  });
+}
+
+
+/* ============================================================
+   Added interaction layer
+   ============================================================ */
+
+/* 1. Scroll progress — rAF-throttled, never a raw scroll handler */
+
+const progress = document.querySelector('.progress');
+const toTop = document.querySelector('.to-top');
+
+if (progress || toTop) {
+  let ticking = false;
+
+  const onFrame = () => {
+    const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const y = window.scrollY;
+    if (progress) progress.style.width = max > 0 ? `${(y / max) * 100}%` : '0%';
+    if (toTop) toTop.classList.toggle('is-visible', y > window.innerHeight);
+    ticking = false;
+  };
+
+  const request = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(onFrame);
+  };
+
+  addEventListener('scroll', request, { passive: true });
+  addEventListener('resize', request, { passive: true });
+  onFrame();
+}
+
+/* 5. Scroll to top */
+
+if (toTop) {
+  toTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+  });
+}
+
+/* 3. Theme toggle — the saved value is applied pre-paint by the head script */
+
+const themeToggle = document.querySelector('.theme-toggle');
+
+if (themeToggle) {
+  const sync = () => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(dark));
+    themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  };
+
+  sync();
+
+  themeToggle.addEventListener('click', () => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    if (dark) {
+      delete document.documentElement.dataset.theme;
+    } else {
+      document.documentElement.dataset.theme = 'dark';
+    }
+    try {
+      localStorage.setItem('theme', dark ? 'light' : 'dark');
+    } catch {
+      /* private mode: the choice simply does not persist */
+    }
+    sync();
+  });
+}
+
+/* 6. Image reveal — gold wipe, once per photo */
+
+const photoFrames = document.querySelectorAll('.frame--photo');
+
+if (photoFrames.length) {
+  const wiper = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('revealed');
+      wiper.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  photoFrames.forEach((f) => wiper.observe(f));
+}
+
+/* 8. Text scramble — only the marked headings, and only after the mask
+   reveal has finished so the two effects do not fight. */
+
+const scrambleTargets = document.querySelectorAll('[data-scramble]');
+
+if (scrambleTargets.length && enhance) {
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+  const scramble = (el) => {
+    const node = el.querySelector('span') || el;
+    const original = node.textContent;
+    const start = performance.now();
+    const settleAt = [...original].map((_, i) => 50 + i * 30);
+    const total = Math.min(Math.max(...settleAt, 400), 500);
+
+    const tick = (now) => {
+      const elapsed = now - start;
+      node.textContent = [...original]
+        .map((ch, i) => {
+          if (ch === ' ') return ' ';
+          if (elapsed >= settleAt[i]) return ch;
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
+        })
+        .join('');
+
+      if (elapsed < total) {
+        requestAnimationFrame(tick);
+      } else {
+        node.textContent = original;
+        el.classList.add('scrambled');
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const scrambler = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      scrambler.unobserve(el);
+
+      // Wait for the headline mask wipe to finish before scrambling
+      const inner = el.querySelector('span');
+      if (inner && el.classList.contains('reveal-text')) {
+        let fired = false;
+        const go = () => { if (!fired) { fired = true; scramble(el); } };
+        inner.addEventListener('animationend', go, { once: true });
+        setTimeout(go, 1100);
+      } else {
+        scramble(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  scrambleTargets.forEach((el) => scrambler.observe(el));
+}
+
+/* 2. Page transitions — fade out, navigate, fade in */
+
+if (!reducedMotion) {
+  const body = document.body;
+  body.classList.add('page-enter');
+
+  // The entry fade must never be what makes content visible. If the compositor
+  // stalls the animation (observed: playState "running", currentTime stuck at
+  // 0), animationend never fires and the page would sit at opacity 0 forever.
+  // Both paths below drop the class, so the content always ends up visible.
+  const reveal = () => body.classList.remove('page-enter');
+  body.addEventListener('animationend', (e) => {
+    if (e.animationName === 'page-in') reveal();
+  });
+  setTimeout(reveal, 400);
+}
+
+if (!reducedMotion) {
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a');
+    if (!link) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#')) return;
+    if (link.target === '_blank' || link.hasAttribute('download')) return;
+    if (/^(mailto:|tel:|https?:)/i.test(href) && link.origin !== location.origin) return;
+    if (link.origin !== location.origin) return;
+
+    // Same page (including a tab for the page you are already on): let it be
+    const url = new URL(link.href);
+    if (url.pathname === location.pathname) return;
+
+    event.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(() => { window.location.href = link.href; }, 250);
   });
 }

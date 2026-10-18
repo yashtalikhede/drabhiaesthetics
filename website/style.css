@@ -22,6 +22,14 @@
   --text-on-dark: #E8E8E8;
   --text-muted-dark: #9A9A9A;
 
+  /* Surfaces are separate from the palette so dark mode can flip the light
+     backgrounds without touching text that sits on permanently-dark sections
+     (nav wordmark, CTA title, footer), which also reads --beige-light. */
+  --surface: #FFFFFF;
+  --surface-sunken: #F7F2E8;
+  --surface-raised: #EDE4D3;
+  --surface-glass: rgba(255, 255, 255, 0.94);
+
   --hairline: rgba(26, 26, 26, 0.12);
   /* Interactive component boundaries need 3:1 (WCAG 1.4.11); the decorative
      hairline above is ~1.3:1 and is only used for dividers and containers. */
@@ -76,7 +84,7 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--white);
+  background-color: var(--surface);
   color: var(--ink-body);
   font-family: var(--font-text);
   font-weight: 400;
@@ -136,8 +144,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section--lg { padding-block: clamp(88px, 12vw, 144px); }
 .section--xl { padding-block: clamp(104px, 14vw, 176px); }
 
-.section--beige { background-color: var(--beige-light); }
-.section--white { background-color: var(--white); }
+.section--beige { background-color: var(--surface-sunken); }
+.section--white { background-color: var(--surface); }
 .section--dark { background-color: var(--jet); color: var(--text-on-dark); }
 
 /* ---------- Type ---------- */
@@ -459,7 +467,7 @@ body.has-cursor select { cursor: auto; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--white);
+  background-color: var(--surface);
   border-bottom: 1px solid var(--hairline);
   transition: background-color var(--t-slow) ease, border-color var(--t-slow) ease;
 }
@@ -476,7 +484,7 @@ body.has-dark-hero .site-header .nav__wordmark { color: var(--beige-light); }
 body.has-dark-hero .site-header .nav__link { color: var(--beige); }
 body.has-dark-hero .site-header .nav__link:hover,
 body.has-dark-hero .site-header .nav__link.is-active { color: var(--gold); }
-body.has-dark-hero .site-header .nav__toggle span { background-color: var(--beige-light); }
+body.has-dark-hero .site-header .nav__toggle span { background-color: var(--surface-sunken); }
 
 body.has-dark-hero.is-past-hero .site-header {
   background-color: rgba(255, 255, 255, 0.92);
@@ -588,7 +596,7 @@ body.has-dark-hero.is-past-hero .site-header .nav__toggle span { background-colo
 .nav__drawer {
   display: grid;
   grid-template-rows: 0fr;
-  background-color: var(--white);
+  background-color: var(--surface);
   transition: grid-template-rows var(--t-base) var(--ease-out);
 }
 
@@ -782,7 +790,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   justify-content: center;
   margin: 0;
   padding: var(--s4);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   border: 1px solid var(--gold);
   overflow: hidden;
 }
@@ -855,7 +863,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .pending {
   font-style: italic;
   color: var(--ink-body);
-  background-color: var(--beige);
+  background-color: var(--surface-raised);
   box-shadow: inset 0 -1px 0 var(--gold);
   padding: 0 0.25em;
 }
@@ -871,7 +879,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .pending-note {
   margin: 0 0 var(--s4);
   padding: 14px 18px;
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   border-left: 2px solid var(--gold);
   font-size: 0.875rem;
   font-style: italic;
@@ -939,7 +947,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   display: flex;
   flex-direction: column;
   padding: var(--s5) var(--s4);
-  background-color: var(--white);
+  background-color: var(--surface);
   border: 1px solid var(--hairline);
   transition: transform var(--t-base) var(--ease-out),
     border-color var(--t-base) ease, box-shadow var(--t-base) ease;
@@ -1000,7 +1008,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   gap: var(--s4);
   align-items: center;
   padding: var(--s6) var(--s5);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   border: 1px solid var(--hairline);
 }
 
@@ -1031,7 +1039,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   flex-direction: column;
   gap: var(--s2);
   padding: var(--s5) var(--s4);
-  background-color: var(--white);
+  background-color: var(--surface);
   border: 1px solid var(--gold);
 }
 
@@ -1174,7 +1182,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 
 .page-head {
   padding-block: var(--s6) var(--s8);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   /* so a #booking arrival clears the sticky header */
   scroll-margin-top: var(--nav-h);
 }
@@ -1277,7 +1285,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   gap: var(--s3);
   min-height: 96px;
   padding: var(--s3) var(--s4);
-  background-color: var(--white);
+  background-color: var(--surface);
   border: 1px solid var(--hairline-strong);
   text-decoration: none;
   transition: border-color var(--t-base) ease, background-color var(--t-base) ease,
@@ -1287,7 +1295,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .concern:hover,
 .concern:focus-visible {
   border-color: var(--gold);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
 }
 
 .concern__icon {
@@ -1329,7 +1337,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   justify-content: center;
   gap: var(--s1);
   padding-block: var(--s2);
-  background-color: rgba(255, 255, 255, 0.94);
+  background-color: var(--surface-glass);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--hairline);
@@ -1356,7 +1364,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .svc-nav a.is-active {
   border-color: var(--gold);
   color: var(--gold-ink);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
 }
 
 .svc-group { scroll-margin-top: 140px; }
@@ -1365,7 +1373,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .svc-list { display: grid; gap: var(--s1); }
 
 .svc {
-  background-color: var(--white);
+  background-color: var(--surface);
   border: 1px solid var(--hairline-strong);
   transition: border-color var(--t-base) ease, box-shadow var(--t-base) ease;
 }
@@ -1455,7 +1463,7 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
   justify-content: center;
 }
 
-.compare__panel--after { background-color: var(--beige); }
+.compare__panel--after { background-color: var(--surface-raised); }
 
 .compare__panel--before {
   background-color: var(--charcoal);
@@ -1643,7 +1651,7 @@ body.has-cursor .compare__range { cursor: none; }
 
 .form-card {
   padding: var(--s5) var(--s3);
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   border: 1px solid var(--hairline);
 }
 
@@ -1663,7 +1671,7 @@ body.has-cursor .compare__range { cursor: none; }
   width: 100%;
   min-height: 48px;
   padding: 12px 14px;
-  background-color: var(--white);
+  background-color: var(--surface);
   border: 1px solid var(--hairline-strong);
   border-radius: 2px;
   font-family: var(--font-text);
@@ -1930,7 +1938,7 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 .spec-list--reserved .reserved {
   margin-top: 0;
   padding: 2px 10px;
-  background-color: var(--beige-light);
+  background-color: var(--surface-sunken);
   border: 1px dashed var(--gold);
   border-radius: 999px;
   font-size: 0.75rem;
@@ -2064,4 +2072,246 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   .rail__link:hover,
   .rail__link:focus-visible { transform: none; }
+}
+
+/* ============================================================
+   Dark mode — flips light surfaces only. Permanently-dark
+   sections (hero, CTA band, footer) are already correct.
+   ============================================================ */
+
+[data-theme='dark'] {
+  --surface: #0D0D0D;
+  --surface-sunken: #1E1E1E;
+  --surface-raised: #161616;
+  --surface-glass: rgba(13, 13, 13, 0.82);
+  --ink: #E8E8E8;
+  --ink-body: #CCCCCC;
+  --ink-muted: #9A9A9A;
+  --gold-ink: var(--gold);
+  --hairline: rgba(232, 213, 168, 0.16);
+  --hairline-strong: rgba(232, 213, 168, 0.34);
+}
+
+.js body,
+.js .section,
+.js .page-head,
+.js .card,
+.js .svc,
+.js .quote,
+.js .form-card,
+.js .frame {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* ---------- 1. Scroll progress ---------- */
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 0;
+  height: 3px;
+  background-color: var(--gold);
+  pointer-events: none;
+}
+
+/* ---------- 2. Page transitions ---------- */
+
+/* One-shot animations rather than a hidden resting state: if a class is ever
+   missed, or JS dies mid-navigation, the page is still fully visible. */
+
+.js body.page-enter { animation: page-in 0.3s ease both; }
+.js body.page-leaving { animation: page-out 0.25s ease both; }
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes page-out {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ---------- 3. Theme toggle button ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle .icon-sun { display: none; }
+[data-theme='dark'] .theme-toggle .icon-sun { display: block; }
+[data-theme='dark'] .theme-toggle .icon-moon { display: none; }
+
+/* ---------- 4. Blur-glass navbar ---------- */
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background-color: var(--surface-glass);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+  }
+
+  body.has-dark-hero .site-header {
+    background-color: rgba(13, 13, 13, 0.7);
+  }
+
+  body.has-dark-hero.is-past-hero .site-header {
+    background-color: var(--surface-glass);
+  }
+
+  [data-theme='dark'] .site-header,
+  [data-theme='dark'] body.has-dark-hero.is-past-hero .site-header {
+    background-color: rgba(13, 13, 13, 0.7);
+  }
+}
+
+/* In dark mode the header text follows the dark treatment on every page */
+[data-theme='dark'] .nav__wordmark { color: var(--beige-light); }
+[data-theme='dark'] .nav__link { color: var(--beige); }
+[data-theme='dark'] .nav__link:hover,
+[data-theme='dark'] .nav__link.is-active { color: var(--gold); }
+[data-theme='dark'] .nav__toggle span { background-color: var(--beige-light); }
+[data-theme='dark'] .nav__drawer { background-color: var(--surface); }
+
+/* ---------- 5. Scroll to top ---------- */
+
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 94;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.to-top::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+}
+
+.to-top svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.to-top.is-visible { opacity: 1; transform: scale(1); pointer-events: auto; }
+
+.to-top:hover,
+.to-top:focus-visible {
+  background-color: var(--gold);
+  color: var(--jet);
+  transform: scale(1.1);
+}
+
+@media (max-width: 47.99rem) {
+  .to-top {
+    right: 16px;
+    /* rail occupies 68px->148px from the bottom (two 36px circles + 8px gap),
+       so 160px clears its top edge with a 12px gap */
+    bottom: calc(160px + env(safe-area-inset-bottom));
+    width: 36px;
+    height: 36px;
+  }
+  .to-top::after { inset: -4px; }
+}
+
+/* ---------- 6. Image reveal wipe ---------- */
+
+.js .frame--photo { position: relative; overflow: hidden; }
+
+.js .frame--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: var(--gold);
+  transform: translateX(0);
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.js .frame--photo img {
+  transform: scale(1.05);
+  transition: transform 0.8s ease-in-out;
+}
+
+.js .frame--photo.revealed::after { transform: translateX(101%); }
+.js .frame--photo.revealed img { transform: scale(1); }
+
+/* ---------- 7. Cursor glow (replaces the dot + ring) ---------- */
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(circle closest-side, rgba(201, 162, 75, 0.06) 0%, rgba(201, 162, 75, 0) 70%);
+}
+
+.cursor-glow.is-on { opacity: 1; }
+.cursor-glow.is-light { opacity: 0.33; }
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .js body.page-enter,
+  .js body.page-leaving {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .frame--photo::after { display: none; }
+  .js .frame--photo img { transform: none; transition: none; }
+  .cursor-glow { display: none; }
+  .to-top { transition: none; }
 }

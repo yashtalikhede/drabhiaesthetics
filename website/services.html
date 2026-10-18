@@ -9,6 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js')</script>
+<script>try{if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -18,6 +19,8 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="progress" id="scrollProgress" aria-hidden="true"></div>
 
 <div class="preloader" aria-hidden="true">
   <img class="preloader__mark" src="assets/logo.png" alt="" width="379" height="360">
@@ -39,6 +42,10 @@
       </ul>
 
       <div class="nav__actions">
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        </button>
         <a class="btn btn--primary nav__cta" href="contact.html#booking">Book Consultation</a>
         <button class="nav__toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
           <span></span><span></span><span></span>
@@ -67,7 +74,7 @@
         <a href="index.html">Home</a> &nbsp;&rsaquo;&nbsp; <span>Services</span>
       </nav>
       <p class="eyebrow">What Brings You Here?</p>
-      <h1 class="page-head__title reveal-text">Start With the Concern</h1>
+      <h1 class="page-head__title reveal-text" data-scramble>Start With the Concern</h1>
       <p class="lead">Twenty-two treatments across skin, hair and fitness. Pick the area that brought you here and we will take it from there.</p>
 
       <div class="concerns">
@@ -563,6 +570,10 @@
   </div>
 </footer>
 
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
+</button>
 
 <div class="rail" id="socialRail">
   <!-- Number not yet confirmed, so the link intentionally carries no digits -->
