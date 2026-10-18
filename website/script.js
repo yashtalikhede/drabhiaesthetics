@@ -61,6 +61,7 @@ document.querySelectorAll('[data-nav]').forEach((el) => {
    own, so contact.html lights Contact (index 4) rather than Book. */
 
 const TAB_INDEX = { index: 0, about: 1, services: 2, contact: 4 };
+const BOOK_TAB = 3;
 
 const tabbar = document.querySelector('.tabbar');
 
@@ -72,12 +73,29 @@ if (tabbar) {
     });
   };
 
-  setTab(TAB_INDEX[page] ?? 0);
+  // Arriving at #booking means the visitor tapped Book, not Contact
+  const bookingTarget = () => window.location.hash === '#booking';
+  const indexForUrl = () => (bookingTarget() ? BOOK_TAB : TAB_INDEX[page] ?? 0);
+
+  setTab(indexForUrl());
+  window.addEventListener('hashchange', () => setTab(indexForUrl()));
 
   // Respond on tap too, before the next page paints
   [...tabbar.querySelectorAll('.tabbar__item')].forEach((tab, i) => {
     tab.addEventListener('click', () => setTab(i));
   });
+}
+
+/* A same-page #booking tap does not re-fire the browser's hash scroll, and a
+   cross-page arrival lands before the fonts settle, so place it explicitly. */
+
+if (window.location.hash === '#booking') {
+  const booking = document.getElementById('booking');
+  if (booking) {
+    requestAnimationFrame(() => {
+      booking.scrollIntoView({ behavior: 'auto', block: 'start' });
+    });
+  }
 }
 
 /* Smooth scroll for in-page anchors */

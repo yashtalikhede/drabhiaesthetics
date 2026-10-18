@@ -1175,6 +1175,8 @@ body.has-dark-hero:not(.is-past-hero) .nav__drawer .nav__link {
 .page-head {
   padding-block: var(--s6) var(--s8);
   background-color: var(--beige-light);
+  /* so a #booking arrival clears the sticky header */
+  scroll-margin-top: var(--nav-h);
 }
 
 .crumbs {
@@ -1959,3 +1961,107 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 /* .reserved is tuned for light surfaces; on the dark footer it needs the
    dark-surface muted tone (6.4:1) instead of --ink-muted (2.6:1). */
 .site-footer .reserved { color: var(--text-muted-dark); }
+
+/* ---------- Social side rail ---------- */
+
+.rail {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Hairline linking the two circles, sitting in the gap */
+.rail::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 1px;
+  height: 12px;
+  background-color: var(--gold);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rail__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--gold);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Expands the hit area to 44px without growing the drawn circle */
+.rail__link::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+}
+
+.rail__link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rail__link:hover,
+.rail__link:focus-visible {
+  background-color: var(--gold);
+  color: var(--jet);
+  transform: scale(1.1);
+}
+
+/* Held back until the hero is behind the visitor, so it never competes with
+   the opening. Without JS it is simply visible. */
+.js .rail {
+  opacity: 0;
+  transform: translateY(-50%) translateX(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.js body.is-past-hero .rail {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 47.99rem) {
+  .rail {
+    top: auto;
+    bottom: calc(68px + env(safe-area-inset-bottom));
+    right: 16px;
+    transform: none;
+    gap: 8px;
+  }
+
+  .rail::before { top: 36px; height: 8px; }
+
+  .rail__link { width: 36px; height: 36px; }
+  .rail__link::after { inset: -4px; }
+  .rail__link svg { width: 16px; height: 16px; }
+
+  .js .rail { transform: translateX(20px); }
+  .js body.is-past-hero .rail { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail__link:hover,
+  .rail__link:focus-visible { transform: none; }
+}
