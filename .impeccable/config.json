@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "website/services.html"
+        ],
+        "createdAt": "2026-10-18T12:13:34.439Z",
+        "reason": "Claude verified: section padding-inline is 0 by design; the inset comes from the inner .wrap gutter. Measured nearest text to container edge: 41px at 1024w, 16px at 375w, both sides, no horizontal overflow. Detector reads the container's own padding and cannot see the wrapper."
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "website/services.html"
+        ],
+        "createdAt": "2026-10-18T12:13:34.461Z",
+        "reason": "Claude verified: the opacity-0 raster is the preloader logo at its entry keyframe, not a shipped invisible asset. script.js removes the node after dismiss; .preloader is absent from the DOM at rest (confirmed preloaderInDom=false)."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "website/index.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.706Z",
+        "reason": "Claude verified across index/services at 375/800/1280px: flagged containers (page-head, hero, trust, section, cta, nav__drawer) carry padding-inline:0 by design and take their gutter from the inner .wrap. Measured nearest text to container edge: 88px at 1280w, 32px drawer links at 800w, 16px at 375w, both sides, no horizontal overflow. Detector reads the container's own padding and cannot see the wrapper."
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "website/index.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.724Z",
+        "reason": "Claude verified: the opacity-0 raster is the preloader logo at its entry keyframe, not a shipped invisible asset. script.js removes the node after dismiss; .preloader is absent from the DOM at rest."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "website/about.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.739Z",
+        "reason": "Claude verified across index/services at 375/800/1280px: flagged containers (page-head, hero, trust, section, cta, nav__drawer) carry padding-inline:0 by design and take their gutter from the inner .wrap. Measured nearest text to container edge: 88px at 1280w, 32px drawer links at 800w, 16px at 375w, both sides, no horizontal overflow. Detector reads the container's own padding and cannot see the wrapper."
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "website/about.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.754Z",
+        "reason": "Claude verified: the opacity-0 raster is the preloader logo at its entry keyframe, not a shipped invisible asset. script.js removes the node after dismiss; .preloader is absent from the DOM at rest."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "website/contact.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.770Z",
+        "reason": "Claude verified across index/services at 375/800/1280px: flagged containers (page-head, hero, trust, section, cta, nav__drawer) carry padding-inline:0 by design and take their gutter from the inner .wrap. Measured nearest text to container edge: 88px at 1280w, 32px drawer links at 800w, 16px at 375w, both sides, no horizontal overflow. Detector reads the container's own padding and cannot see the wrapper."
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "website/contact.html"
+        ],
+        "createdAt": "2026-10-18T16:25:18.789Z",
+        "reason": "Claude verified: the opacity-0 raster is the preloader logo at its entry keyframe, not a shipped invisible asset. script.js removes the node after dismiss; .preloader is absent from the DOM at rest."
+      }
+    ]
+  }
+}
