@@ -60,8 +60,7 @@ document.querySelectorAll('[data-nav]').forEach((el) => {
    Order is Home, About, Services, Book, Contact — Book has no page of its
    own, so contact.html lights Contact (index 4) rather than Book. */
 
-const TAB_INDEX = { index: 0, about: 1, services: 2, contact: 4 };
-const BOOK_TAB = 3;
+const TAB_INDEX = { index: 0, about: 1, services: 2, contact: 3 };
 
 const tabbar = document.querySelector('.tabbar');
 
@@ -73,12 +72,8 @@ if (tabbar) {
     });
   };
 
-  // Arriving at #booking means the visitor tapped Book, not Contact
-  const bookingTarget = () => window.location.hash === '#booking';
-  const indexForUrl = () => (bookingTarget() ? BOOK_TAB : TAB_INDEX[page] ?? 0);
-
-  setTab(indexForUrl());
-  window.addEventListener('hashchange', () => setTab(indexForUrl()));
+  // Book is the only tab pointing at contact.html, so the page alone decides
+  setTab(TAB_INDEX[page] ?? 0);
 
   // Respond on tap too, before the next page paints
   [...tabbar.querySelectorAll('.tabbar__item')].forEach((tab, i) => {

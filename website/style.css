@@ -667,7 +667,7 @@ body.has-dark-hero.is-past-hero .site-header .nav__toggle span { background-colo
   position: absolute;
   top: 10px;
   left: 0;
-  width: 20%;
+  width: 25%;
   height: 40px;
   background-color: var(--gold);
   border-radius: 8px;
