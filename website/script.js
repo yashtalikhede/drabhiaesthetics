@@ -5,6 +5,32 @@ const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const enhance = finePointer && !coarsePointer && !reducedMotion;
 
+/* Meta Pixel events. Every call is guarded so a blocked or failed pixel can
+   never throw. No personal or health data is ever sent as a parameter. */
+
+const trackPixel = (event, params) => {
+  if (typeof fbq !== 'function') return;
+  try {
+    if (params) fbq('track', event, params);
+    else fbq('track', event);
+  } catch {
+    /* an ad blocker tore the pixel down mid-call; nothing to recover */
+  }
+};
+
+// Delegated so links added later are covered without rebinding
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+
+  if (/^https?:\/\/(www\.)?(wa\.me|api\.whatsapp\.com)\b/i.test(href)) {
+    trackPixel('Contact', { method: 'whatsapp' });
+  } else if (/^tel:/i.test(href)) {
+    trackPixel('Contact', { method: 'phone' });
+  }
+});
+
 /* Preloader — CSS dismisses it; this only removes the node afterwards */
 
 const preloader = document.querySelector('.preloader');
@@ -279,6 +305,8 @@ if (form) {
       });
 
       if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+
+      trackPixel('Lead');
 
       form.reset();
       form.hidden = true;
