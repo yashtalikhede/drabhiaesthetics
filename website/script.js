@@ -18,6 +18,19 @@ const trackPixel = (event, params) => {
   }
 };
 
+/* Google Ads conversions. Same guard as the pixel: if gtag is missing,
+   nothing is sent and nothing throws. */
+
+function trackGoogleAdsConversion(sendTo) {
+  if (typeof gtag === 'function') {
+    gtag('event', 'conversion', {
+      'send_to': sendTo,
+      'value': 1.0,
+      'currency': 'INR'
+    });
+  }
+}
+
 // Delegated so links added later are covered without rebinding
 document.addEventListener('click', (event) => {
   const link = event.target.closest('a[href]');
@@ -26,8 +39,10 @@ document.addEventListener('click', (event) => {
 
   if (/^https?:\/\/(www\.)?(wa\.me|api\.whatsapp\.com)\b/i.test(href)) {
     trackPixel('Contact', { method: 'whatsapp' });
+    trackGoogleAdsConversion('AW-18470239568/imrQCKfgt6MdEND6pedE');
   } else if (/^tel:/i.test(href)) {
     trackPixel('Contact', { method: 'phone' });
+    trackGoogleAdsConversion('AW-18470239568/S8jQCKrgt6MdEND6pedE');
   }
 });
 
@@ -307,6 +322,7 @@ if (form) {
       if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
 
       trackPixel('Lead');
+      trackGoogleAdsConversion('AW-18470239568/ITPRCPyc0aMdEND6pedE');
 
       form.reset();
       form.hidden = true;
