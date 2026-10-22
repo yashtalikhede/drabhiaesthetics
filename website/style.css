@@ -1980,7 +1980,6 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 }
 
 .services__room {
-  margin-bottom: var(--s6);
   aspect-ratio: 16 / 9;
   max-height: 360px;
 }
