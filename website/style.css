@@ -131,10 +131,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--jet);
 }
 
+/* Gold measured 2.4:1 on white as a focus ring (WCAG 1.4.11 needs 3:1);
+   --gold-ink is 6.2:1. Always-dark bands keep the brighter gold. */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--gold-ink);
   outline-offset: 3px;
 }
+
+.cta :focus-visible,
+.site-footer :focus-visible,
+.tabbar :focus-visible { outline-color: var(--gold); }
 
 /* ---------- Layout ---------- */
 
@@ -170,9 +176,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--gold-ink);
 }
 
+/* The hero follows the theme, so its eyebrow keeps the default --gold-ink:
+   plain gold on the light hero measured 2.15:1; --gold-ink is 5.17:1 there
+   and resolves to --gold in dark mode. */
 .section--dark .eyebrow,
-.cta .eyebrow,
-.hero .eyebrow { color: var(--gold); }
+.cta .eyebrow { color: var(--gold); }
 
 .h-display {
   font-weight: 300;
@@ -283,10 +291,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   box-shadow: var(--shadow-lift);
 }
 
+/* Lives on the theme-following hero: --gold-ink keeps text and edge legible
+   on the light hero and is plain --gold in dark mode */
 .btn--ghost {
   background-color: transparent;
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--gold-ink);
+  color: var(--gold-ink);
 }
 
 .btn--ghost:hover,
@@ -1560,9 +1570,10 @@ body.has-dark-hero.is-past-hero .site-header .nav__toggle span { background-colo
   cursor: ew-resize;
 }
 
+/* .compare clips its overflow, so the ring has to sit inside the range box */
 .compare__range:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
+  outline: 2px solid var(--gold-ink);
+  outline-offset: -4px;
 }
 
 body.has-cursor .compare__range { cursor: none; }
@@ -1691,7 +1702,7 @@ body.has-cursor .compare__range { cursor: none; }
   transition: border-color var(--t-base) ease;
 }
 
-.field__input:focus { outline: none; border-color: var(--gold); }
+.field__input:focus { outline: none; border-color: var(--gold-ink); }
 .field__input:user-invalid { border-color: var(--error); }
 
 textarea.field__input { min-height: 112px; resize: vertical; }
@@ -1882,6 +1893,10 @@ textarea.field__input { min-height: 112px; resize: vertical; }
   }
 
   .split--editorial > :first-child { position: sticky; top: calc(var(--nav-h) + 32px); }
+
+  /* .js .frame--photo (later, same specificity) resets position to relative,
+     which would turn this top offset into a 112px shove; keep it sticky */
+  .js .split--editorial > .frame--photo:first-child { position: sticky; }
 
   .cards { grid-template-columns: repeat(3, 1fr); }
 
@@ -2339,3 +2354,20 @@ textarea.field__input { min-height: 112px; resize: vertical; }
 
 /* The actions cluster must never bleed past the wrap's gutter */
 .nav__actions { min-width: 0; }
+
+/* The header icons shrink to 32-36px and the theme pill is 28px tall; an
+   invisible pseudo-element gives each a 44px-tall hit area without moving
+   anything. Widths stay as they are: the icons sit 6-8px apart. */
+.nav__social a { position: relative; }
+
+.nav__social a::after,
+.theme-pill::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
